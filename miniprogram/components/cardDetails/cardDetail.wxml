@@ -100,7 +100,8 @@
 					<button
 					 class="button_invite"
 					 open-type='share'
-					 data-index="{{item}}"
+					 data-inviteId="{{$state.CardData[item].groupData.invite_id}}"
+					 data-nickName="{{$state.CardData[item].groupData.groupMembers[0].nickname}}"
 					 style="background-color: transparent;text-align:left;position:absolute;color:rgba(0,0,0,0)"
 					>
 						分享

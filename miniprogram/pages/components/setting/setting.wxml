@@ -4,8 +4,8 @@
 	<view class="user">
 		<open-data class='user_img' type="userAvatarUrl" />
 		<view class="userzonetext">
-			<open-data class="user_name {{$state.isLogin?'':'displayNone'}}" type='userNickName' />
-			<view class="user_name" hidden="{{$state.isLogin}}" bindtap="ToLogin">请登录</view>
+			<open-data class="user_name" wx:if="{{$state.isLogin}}" type='userNickName' />
+			<view class="user_name" wx:else bindtap="ToLogin">请登录</view>
 			<text>使用天数:{{$state.using_day}}</text>
 		</view>
 	</view>
