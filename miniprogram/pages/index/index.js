@@ -104,11 +104,12 @@ Page({
   // e.target.dataset.index为传过来的下标（第几个打卡）
   onShareAppMessage: function (e) {
     console.info(JSON.stringify(e,null,2));
-    const { nickName, inviteId } = e.target.dataset;
+    const { nickname, inviteid } = e.target.dataset;
+    console.info(nickname,inviteid);
     return {
-      title: nickName + '邀请您一起和TA打卡',
+      title: (nickname ? nickname : '') + '邀请您一起和TA打卡',
       desc: '分享页面的内容',
-      path: 'pages/index/index?id=' + inviteId,
+      path: 'pages/index/index?id=' + inviteid,
       // 路径，传递参数到指定页面。
     };
   },
@@ -497,6 +498,7 @@ Page({
   },
   //弹窗
   async changePage_Finish(e) {
+    console.info(this.$state.aimCardData);
     if (
       this.$state.aimCardData['title'] != null &&
       ((this.$state.aimCardData['goal_type'] != 1 && this.$state.aimCardData['goal_type'] != null) ||

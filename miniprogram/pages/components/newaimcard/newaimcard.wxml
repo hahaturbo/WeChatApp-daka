@@ -130,9 +130,9 @@
 			<!-- 新建打卡默认0，详情传对应下标 -->
 			<button
 			 class="btn_invite"
-			 open-type='{{can_share?"share":""}}'
+			 open-type='{{$state.can_share?"share":""}}'
 			 bindtap="btn_share"
-			 data-inviteId="{{invite_id}}"
+			 data-inviteid="{{invite_id}}"
 			>
 				{{share_text[1]}}
 			</button>

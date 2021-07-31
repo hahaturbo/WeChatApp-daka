@@ -374,7 +374,7 @@ Component({
 
     //分享
     async btn_share(e) {
-      if (this.data.can_share) {
+      if (this.$state.can_share) {
         return;
       }
       let invite_id = '';
@@ -490,9 +490,11 @@ Component({
           board_num: this.$state.board_num + 1,
         });
         console.log('board up success');
+        this.setState({
+          can_share: true,
+        })
         this.setData({
           invite_id: invite_id,
-          can_share: true,
           share_text: ['(共可邀请4人)', '发送邀请'],
         });
       } else {
@@ -510,8 +512,10 @@ Component({
           ],
           dialogShow: true,
         });
-        this.setData({
+        this.setState({
           can_share: false,
+        })
+        this.setData({
           share_text: ['(新建打卡后可邀请)', '新建打卡'],
         });
       }
