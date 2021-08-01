@@ -1,0 +1,4 @@
+<!-- miniprogram/pages/setting/UsingHelp/UsingHelp.wxml -->
+<view class='UsingHelp' style="overflow-y: auto;width:100%;">
+	<image lazy-load src="https://wxda.hahaturbo.site/daka-img/help.jpg" style="height:7005rpx;width:720rpx" />
+</view>

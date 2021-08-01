@@ -1,0 +1,154 @@
+/* pages/tick/tick.wxss */
+.displayNone {
+  display: none !important;
+}
+
+.board {
+  width: 88%;
+  min-height: 80%;
+  box-sizing: border-box;
+  border: 3rpx solid #000;
+  border-radius: 50rpx;
+  background: rgb(255, 255, 255);
+  margin: auto;
+  padding: 20rpx;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-img {
+  width: 85rpx;
+  height: 50rpx;
+  float: right;
+}
+
+.clicp {
+  width: 110rpx;
+  height: 110rpx;
+  position: absolute;
+  right: 50rpx;
+  top: -70rpx;
+}
+
+.clicp2 {
+  width: 80rpx;
+  height: 150rpx;
+  position: absolute;
+  right: 50rpx;
+  top: -70rpx;
+}
+
+.cavAll {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.cavout {
+  width: 300px;
+  height: 400px;
+  background-color: white;
+}
+
+.close_icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 30rpx;
+  border: 3rpx solid #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tick_circle {
+  margin-right: 20rpx;
+  border-radius: 50%;
+  border-width: 5rpx;
+  border-style: solid;
+  border-color: gray;
+  width: 30rpx;
+  height: 30rpx;
+  flex-shrink: 0;
+}
+
+input {
+  width: 90%;
+}
+
+.title {
+  margin-top: 20rpx;
+  color: #ED7D31;
+  font-size: 50rpx;
+  font-weight: bold;
+}
+
+movable-area {
+  height: 100%;
+  width: 100%;
+  margin: 10rpx;
+  align-items: center;
+}
+
+
+
+.line {
+  margin: 20rpx;
+  height: 60rpx;
+  width: 95%;
+  background: white;
+  border-bottom: 2rpx solid #cecece;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.TapArea {
+  margin-bottom: 0;
+  margin-right: 30rpx;
+
+}
+
+.line view,
+.line input,
+.line image {
+  position: relative;
+  bottom: 0rpx;
+}
+
+
+.movable-area {
+  position: absolute;
+  top: 0;
+  left: 0rpx;
+  z-index: 10;
+  width: 100%;
+
+}
+
+.movable-row {
+  box-shadow: #D9D9D9 0px 0px 20px;
+}
+
+
+.ready-place {
+  background-color: #CCCCCC
+}
+
+.content {
+  font-size: 17px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

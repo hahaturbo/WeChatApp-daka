@@ -1,0 +1,32 @@
+{
+  "singleQuote": true,
+  "semi": true,
+  "arrowParens": "avoid",
+  "htmlWhitespaceSensitivity": "ignore",
+  "trailingCommas": "all",
+  "jsxBrackets": true,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "eslintIntegration": true,
+  "tslintIntegration": true,
+  "overrides": [
+    {
+      "files": "*.wxml",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.wxs",
+      "options": {
+        "parser": "babel"
+      }
+    },
+    {
+      "files": "*.wxss",
+      "options": {
+        "parser": "css"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<!--miniprogram/pages/setting/about/about.wxml-->
+<!--miniprogram/pages/setting/dakaka.wxml-->
+<view class="box1">
+       <text>极简打卡</text>   
+</view>
+ 
+<view class="box2">
+      <view>极简打卡，一款极简的打卡小程序</view>
+      <view>没有圈子等复杂的功能，只为专心打卡</view>
+      <text>\n安安静静的</text>
+      <view>完成自己设定的小目标</view>
+       <text>\n从此刻开始</text>
+</view>
+
+<view class="box3">   
+     <view class="box3in">
+     <text >---</text>
+     <navigator   url="../serverdetail/serverdetail">
+     <text >服务协议</text>
+     </navigator>
+     <text>-----</text>
+     <navigator url="../contact/contact">联系方式</navigator>
+     <text>---</text>
+     </view>
+</view>
+
+<view  class="box4">
+     <text style="font-size:32rpx">版本号：</text>
+     <text style="font-size:32rpx">{{$state.version}}</text>     
+</view>
+

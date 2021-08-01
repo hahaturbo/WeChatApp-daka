@@ -1,0 +1,35 @@
+<!--pages/beinvited/invoted.wxml-->
+<view class="invite">
+	<mp-loading show="{{error_code!==200}}" type="circle" animated="true"></mp-loading>
+	<!--账户信息区 -->
+	<view class="user" wx:if="{{error_code===200}}">
+		<!-- <open-data class='user_img' type="userAvatarUrl"></open-data> -->
+		<image lazy-load class='user_img' src='{{invite_data.groupMembers[0].img}}' />
+		<view class="userzonetext">
+			<text  class='user_name'>{{error_code==502?"获取邀请失败":error_code==404?"未授权登陆无法获取邀请信息":invite_data.groupMembers[0].nickname}} </text>
+			<text>{{error_code==404?"同意授权登陆后可查看":"邀请您加入打卡小组"}}</text>
+		</view>
+
+	</view>
+	<!-- end -->
+	<view class='invite_data' style='overflow-y: auto;width:100%;' wx:if="{{error_code===200}}">
+		<view class='detail'>打卡标题：{{invite_data.goal.goal_name}}</view>
+		<view class='detail'>打卡类型：小组 {{goal_type[invite_data.goal.goal_type]}}</view>
+		<view wx:if="{{invite_data.goal.goal_type==1}}">
+			<view class='detail'>开始日期：{{invite_data.goal.goal_start_time}}</view>
+			<view class='detail'>结束日期：{{invite_data.goal.goal_end_time}}</view>
+			<view class='detail'>打卡频率：每{{invite_data.goal.frequency}}{{invite_data.goal.goal_frequency_type[2]==0?"天":"月"}} {{invite_data.goal.goal_frequency_type[0]==0?"中一天":"仅当天"}}</view>
+			<view class='detail'>打卡时间：{{invite_data.goal.goal_needed_sign_at}}——{{invite_data.goal.goal_needed_sign_at_deadline}}</view>
+		</view>
+		<view class='detail'>小组人数：{{invite_data.groupMembers.length}}</view>
+		<view class='detail'>小组成员：
+			<view class="members">
+				<view class='member' wx:for="{{invite_data.groupMembers}}">
+					<image lazy-load class='member_img' src='{{item.img}}' />
+					<text  class='member_name'>{{item.nickname}} </text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+

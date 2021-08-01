@@ -1,0 +1,159 @@
+<!--index.wxml-->
+<wxs src="./index.wxs" module="my" />
+<view class="container">
+	<view class="auth" hidden="{{$state.isLogin||$state.isTry}}">
+
+		<view class="auth_in">
+			<h1>登陆授权</h1>
+			<open-data class='user_img' type="userAvatarUrl" />
+			<h1>{{error_code}}</h1>
+			<button open-type='getUserInfo' bindtap='BtnCheckP' id='bn_login'>请使用微信登陆</button>
+			<button bindtap="btn_nologin">暂不登陆</button>
+		</view>
+	</view>
+	<image wx:if='{{$state.skin==1}}' class='background' src="https://wxda.hahaturbo.site/daka-img/background.png"
+		mode="aspectFill" />
+	<image wx:if='{{$state.skin==2}}' class='background' src="https://wxda.hahaturbo.site/daka-img/background2.png"
+		mode="aspectFill" />
+	<mp-dialog title="{{dialogTitle}}" show="{{dialogShow}}" bindbuttontap="tapDialogButton"
+		buttons="{{dialogsButton}}" />
+	<view class='down {{$state.skin==1?"d_shadow":""}} {{$state.skin==2?"d_black_line":""}}'>
+		<view class='downfirst' wx:if="{{(nowPage==0&&$state.card_num==0)||(!$state.isLogin&&nowPage==0)}}">
+			<text style="color:gray">现在，给自己制定一个打卡计划</text>
+			<text style="color:gray">⬇</text>
+		</view>
+		<view class='downleft'>
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/aim3.png" data-to="3" bindtap="ChangePageGetBoard"
+				hidden="{{!(nowPage==0||nowPage==2||nowPage==3)}}" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/back.png" hidden="{{!(nowPage==1)}}" data-to="0"
+				bindtap="changePage_Back" />
+			<image lazy-load hidden='{{!(nowPage==4)}}' src="https://wxda.hahaturbo.site/daka-img/back.png" data-to="0"
+				bindtap="DetailEnd" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/notmodify.png" hidden="{{!(nowPage==6)}}" data-to="4"
+				bindtap="changePage_Back" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/refuse.png" hidden="{{!(nowPage==5)}}" data-to="0"
+				bindtap="changePage" />
+		</view>
+		<view class='downmid'>
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/newaim3(new).png" data-to="1"
+				hidden="{{!(nowPage==0||nowPage==1)}}" bindtap="{{$state.isLogin?'changeNewAimPage':'ToLogin'}}" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/tick.png" hidden="{{!(nowPage==2||nowPage==3)}}"
+				data-to="0" bindtap="ChangePagePostBoard" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/carddetail(new).png" hidden="{{!(nowPage==4)}}" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/modifycard(new).png" hidden="{{!(nowPage==6)}}" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/join_group(new).png" hidden="{{!(nowPage==5)}}" />
+		</view>
+		<view class='downright'>
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/setting3.png" data-to="2"
+				hidden="{{!(nowPage==0||nowPage==2||nowPage==3)}}" bindtap="ChangePagePostBoard" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/finish.png" hidden="{{!(nowPage==1)}}" data-to="0"
+				bindtap="changePage_Finish" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/modify.png" hidden="{{!(nowPage==4)}}" data-to="6"
+				bindtap="changePage" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/savemodify.png" hidden="{{!(nowPage==6)}}" data-to="4"
+				bindtap="modifycard" />
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/accept.png" hidden="{{!(nowPage==5)}}" data-to="0"
+				bindtap="{{$state.isLogin?'AcceptInvite':'ToLogin'}}" />
+		</view>
+	</view>
+	<view class='AllMainCard' wx:if="{{nowPage== 0}}" style="overflow-y:auto">
+		<view
+			class='aim_card  {{$state.skin==1? "bgcolor-o":""}} {{$state.skin==2? "bgcolor-skin2":""}} {{nowPage != 0 ? "toFullCard" : (changedPageCounts != 0 ? "return2Home" : "")}}'
+			animation="{{open_animation}}">
+
+			<view class='home-content' wx:if="{{nowPage==0}}">
+				<image lazy-load wx:if='{{$state.skin==1}}' hidden="{{$state.card_num!=0&&$state.isLogin}}"
+					style=" width:100%;height:100%" src="https://wxda.hahaturbo.site/daka-img/mainnew.png" />
+				<image lazy-load wx:if='{{$state.skin==2}}' hidden="{{$state.card_num!=0&&$state.isLogin}}"
+					style=" width:100%;height:100%" src="https://wxda.hahaturbo.site/daka-img/mainnew3.png" />
+				<view class='home-content' wx:if="{{$state.card_num!=0&&$state.isLogin}}">
+					<text class='{{$state.skin==1 ? "text_skin1" : ""}} {{$state.skin==2 ? "text_skin2" : ""}}'
+						bindtap="gotodetails" data-to="{{0}}">{{$state.aimCardDatas[0].goal_name}}
+					</text>
+					<image lazy-load bindtap="gotodetails" data-to="{{0}}" class='' style=" width:70%;height:40%"
+						src="https://wxda.hahaturbo.site/daka-img/mainnew2.png" />
+
+					<text wx:if="{{$state.aimCardDatas[0].goal_is_a_group==0}}"
+						style='color:#FF9966; font-size:30rpx;'>已连续{{$state.aimCardDatas[0].continuousNum
+						}}次</text>
+					<text wx:if="{{$state.aimCardDatas[0].goal_is_a_group==1}}" style='color:#FF9966; font-size:30rpx;'>
+						今日小组已有{{$state.aimCardDatas[0].how_many_today}}人打卡
+					</text>
+					<button
+						class='new_aim_card {{$state.aimCardDatas[0].sign_today||(!$state.aimCardDatas[0].sign_today&&($state.aimCardDatas[0].goal_type==2&&my.myInt($state.aimCardDatas[0].frequency)>my.myInt($state.stepInfoList[$state.stepInfoList.length-1].step)))?"NACunable":""}}'
+						data-id='{{$state.aimCardDatas[0].goal_id}}' data-index="{{0}}"
+						bindtap='{{$state.aimCardDatas[0].sign_today?"":"sign_btn"}}'>
+						<text style='{{$state.skin==1?"color:#FFFFFF;":"color:#000000"}}'
+							hidden="{{!(!$state.aimCardDatas[0].sign_today&&($state.aimCardDatas[0].goal_type!=2||($state.aimCardDatas[0].goal_type==2&&my.myInt($state.aimCardDatas[0].frequency)<=my.myInt($state.stepInfoList[$state.stepInfoList.length-1].step))))}}">今日打卡
+						</text>
+						<text style='{{$state.skin==1?"color:#FFFFFF;":"color:#000000"}}'
+							hidden="{{!(!$state.aimCardDatas[0].sign_today&&$state.aimCardDatas[0].goal_type==2&&my.myInt($state.aimCardDatas[0].frequency)>my.myInt($state.stepInfoList[$state.stepInfoList.length-1].step))}}">今日未完成
+						</text>
+						<image lazy-load wx:if='{{$state.skin==1}}' hidden="{{!$state.aimCardDatas[0].sign_today}}"
+							src="https://wxda.hahaturbo.site/daka-img/tickB_finish.png" style="width:100%; height:90rpx" />
+						<image lazy-load wx:if='{{$state.skin==2}}' hidden="{{!$state.aimCardDatas[0].sign_today}}"
+							src="https://wxda.hahaturbo.site/daka-img/tickB_finish2.png" style="width:100%; height:90rpx" />
+
+					</button>
+				</view>
+			</view>
+		</view>
+		<view
+			class='mid-contentA {{$state.skin==2?"bgcolor-skin2":""}} {{(index%3==0&&$state.skin==1)?"bgcolor-g":""}} {{(index%3==1&&$state.skin==1)?"bgcolor-b":""}} {{(index%3==2&&$state.skin==1)?"bgcolor-o":""}}'
+			wx:for='{{$state.aimCardDatas}}' wx:key="item" wx:if="{{$state.aimCardDatas[index+1]}}">
+			<view class='contentAText'>
+				<text bindtap="gotodetails"
+					class='mid-text {{$state.skin==1 ? "text_skin1" : ""}} {{$state.skin==2 ? "text_skin2" : ""}}'
+					data-to="{{index+1}}">{{$state.aimCardDatas[index+1].goal_name}}</text>
+				<text class='small-text {{$state.skin==1 ? "text_skin1" : ""}} {{$state.skin==2 ? "text_skin2_2" : ""}}'
+					wx:if="{{$state.aimCardDatas[index+1].goal_is_a_group==0}}">已连续{{$state.aimCardDatas[index+1].continuousNum
+					}}次</text>
+				<text class='small-text {{$state.skin==1 ? "text_skin1" : ""}} {{$state.skin==2 ? "text_skin2_2" : ""}}'
+					wx:if="{{$state.aimCardDatas[index+1].goal_is_a_group==1}}">本次小组已有{{$state.aimCardDatas[index+1].how_many_today}}人打卡</text>
+			</view>
+			<view
+				class='button {{$state.aimCardDatas[index+1].sign_today||(!$state.aimCardDatas[index+1].sign_today&&$state.aimCardDatas[index+1].goal_type==2&&my.myInt($state.aimCardDatas[index+1].frequency)>my.myInt($state.stepInfoList[$state.stepInfoList.length-1].step))?"buttonNo":""}}'
+				data-id='{{$state.aimCardDatas[index+1].goal_id}}' data-index='{{index+1}}' bindtap='sign_btn'>
+				<image lazy-load wx:if='{{$state.skin==1}}' class='icon' hidden="{{!$state.aimCardDatas[index+1].sign_today}}"
+					src="https://wxda.hahaturbo.site/daka-img/tick_finish.png" />
+				<image lazy-load wx:if='{{$state.skin==2}}' class='icon' hidden="{{!$state.aimCardDatas[index+1].sign_today}}"
+					src="https://wxda.hahaturbo.site/daka-img/tick_finish2.png" />
+				<image lazy-load
+					hidden="{{$state.aimCardDatas[index+1].sign_today||$state.aimCardDatas[index+1].frequency_type[0]!=0}}"
+					class='icon' src="https://wxda.hahaturbo.site/daka-img/tick_able.png" />
+				<image lazy-load class='icon'
+					hidden="{{!(!$state.aimCardDatas[index+1].sign_today&&($state.aimCardDatas[index+1].goal_type==0||($state.aimCardDatas[index+1].goal_type==2&&my.myInt($state.aimCardDatas[index+1].frequency)<=my.myInt($state.stepInfoList[$state.stepInfoList.length-1].step))))}}"
+					src="https://wxda.hahaturbo.site/daka-img/tick_today.png" />
+				<image lazy-load wx:if='{{$state.skin==1}}'
+					hidden="{{!(!$state.aimCardDatas[index+1].sign_today&&$state.aimCardDatas[index+1].goal_type==2&&my.myInt($state.aimCardDatas[index+1].frequency)>my.myInt($state.stepInfoList[$state.stepInfoList.length-1].step))}}"
+					src="https://wxda.hahaturbo.site/daka-img/tick_unfinish.png" />
+				<image lazy-load wx:if='{{$state.skin==2}}'
+					hidden="{{!(!$state.aimCardDatas[index+1].sign_today&&$state.aimCardDatas[index+1].goal_type==2&&my.myInt($state.aimCardDatas[index+1].frequency)>my.myInt($state.stepInfoList[$state.stepInfoList.length-1].step))}}"
+					src="https://wxda.hahaturbo.site/daka-img/tick_unfinish2.png" />
+			</view>
+		</view>
+	</view>
+	<view
+		class='FullScreenCard {{$state.skin==1? "bgcolor-o":""}} {{$state.skin==2? "bgcolor-skin2":""}} {{nowPage != 0 ? "toFullCard" : (changedPageCounts != 0 ? "return2Home" : "")}}'
+		wx:if="{{nowPage==1||nowPage==2||nowPage==4||nowPage==5}}"
+		style="{{isScrollToTop?'margin-top:0;':''}}"
+		>
+		<newaimcard wx:if="{{nowPage==1}}" />
+		<!-- nowpage 1 end -->
+		<setting wx:if="{{nowPage==2}}" />
+
+		<!-- nowpage==5 -->
+		<invite wx:if="{{nowPage==5}}" />
+		<!-- nowpage==4 -->
+		<carddetail wx:if="{{nowPage==4}}" carditem="{{carditem}}" bind:deleteEvent='getsondelete'
+			bind:getCardData='GetCardData' bind:scrollToTop="scrollToTop"/>
+	</view>
+	<!-- 再来一个，实现进出背景和内容动画都有 -->
+	<view class='FullScreenCard toFullCard {{$state.skin==1? "bgcolor-o":""}} {{$state.skin==2? "bgcolor-skin2":""}}'
+		wx:if="{{nowPage==6}}">
+		<!-- nowpage==6 -->
+		<modifycard carditem="{{carditem}}" wx:if="{{nowPage==6}}" id='modifycard' bind:deleteEvent='getsondelete' />
+	</view>
+	<!-- nowpage3 start -->
+	<tick wx:if="{{nowPage==3}}" class="toGoalCard" />
+</view>

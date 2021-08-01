@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "carddetail": "../../components/cardDetails/index",
+    "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "newaimcard": "../components/newaimcard/index",
+    "setting": "../components/setting/index",
+    "tick": "../components/tick/index",
+    "invite": "../components/invite/index",
+    "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon",
+    "modifycard": "../components/modifycard/index"
+  }
+}

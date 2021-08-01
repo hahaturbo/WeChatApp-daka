@@ -1,0 +1,33 @@
+var preClientX = 0;
+
+function throttle(fun, delay) {
+	var pre = Date.now()
+	return function (event, ownerInstance) {
+		var cur = Date.now();
+		if (cur - pre < delay) return false;
+		else {
+			// preClientX = 0;
+			fun(event, ownerInstance)
+			pre = cur
+		}
+	}
+}
+wxsTouchStart = function (event, ownerInstance) {
+	preClientX = event.touches[0].clientX;
+	return false;
+}
+wxsTouchMove = function (event, ownerInstance) {
+	if (preClientX && event.touches[0].clientX - preClientX >= 10) {
+		event.instance.callMethod("handleTouchMove", {
+			result: "toRight"
+		})
+	} else if (preClientX && event.touches[0].clientX - preClientX <= -10) {
+		event.instance.callMethod("handleTouchMove", {
+			result: "toLeft"
+		})
+	}
+}
+module.exports = {
+	wxsTouchStart: throttle(wxsTouchStart, 200),
+	wxsTouchMove: throttle(wxsTouchMove, 200)
+}

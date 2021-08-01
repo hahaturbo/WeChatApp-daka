@@ -1,0 +1,6 @@
+/* miniprogram/pages/setting/about/contact/contact.wxss */
+text{
+  margin:20rpx;
+  text-align:center;
+  display:block;
+}

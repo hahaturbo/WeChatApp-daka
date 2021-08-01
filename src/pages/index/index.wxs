@@ -1,0 +1,6 @@
+var myInt = function (val) {
+	return parseInt(val)
+}
+module.exports = {
+	myInt:myInt
+}

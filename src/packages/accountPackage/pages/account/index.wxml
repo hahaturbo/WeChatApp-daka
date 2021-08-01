@@ -1,0 +1,25 @@
+<!--miniprogram/pages/setting/account/account.wxml-->
+<mp-dialog
+ title="{{dialogTitle}}"
+ show="{{dialogShow}}"
+ bindbuttontap="tapDialogButton"
+ buttons="{{dialogsButton}}"
+>
+	<!-- <view>{{dialogTitle}}</view> -->
+</mp-dialog>
+<view class="account">
+	<open-data class='user_img' type="userAvatarUrl" />
+	<open-data class='user_name' type="userNickName" />
+	<view class='account_data'>
+		<view class='detail'>使用时间：{{$state.using_day}}天</view>
+		<view class='detail'>创建打卡：{{user_info.goal_num}}个</view>
+		<view class='detail'>现有打卡：{{user_info.goal_num?$state.aimCardDatas.length:0}}个</view>
+		<view class='detail'>打卡次数：{{user_info.tick_times}}个</view>
+		<view class='detail' />
+	</view>
+	<view class='account_data'>
+		<view class='clean' data-tap="btn_clean" bindtap="btn">——清除记录——</view>
+		<button class='logoff' data-tap='btn_logoff' bindtap="btn">注销用户</button>
+	</view>
+</view>
+

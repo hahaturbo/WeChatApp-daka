@@ -1,0 +1,2 @@
+<!--components/cav/cav.wxml-->
+<canvas canvas-id="share" class="cav" bindlongtap='longhandleSave' ></canvas>

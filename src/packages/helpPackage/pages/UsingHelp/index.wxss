@@ -1,0 +1,9 @@
+/* miniprogram/pages/setting/UsingHelp/UsingHelp.wxss */
+.UsingHelp {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff
+}

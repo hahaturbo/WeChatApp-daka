@@ -1,0 +1,114 @@
+<!--pages/tick/tick.wxml-->
+<view class="board">
+	<image
+	 class="board-img"
+	 lazy-load
+	 wx:if='{{$state.skin==1}}'
+	 class="clicp"
+	 src="https://wxda.hahaturbo.site/daka-img/clicp.png"
+	/>
+	<image
+	 class="board-img"
+	 lazy-load
+	 wx:if='{{$state.skin==2}}'
+	 class="clicp2"
+	 src="https://wxda.hahaturbo.site/daka-img/clicp2.png"
+	/>
+	<view class="cavAll" wx:if='{{cav}}'>
+		<cav class='cavout' />
+		<mp-icon
+		 class="close_icon"
+		 icon="close"
+		 color="black"
+		 size="{{25}}"
+		 bindtap="cav_close"
+		/>
+	</view>
+
+	<view class="title">我的目标板 </view>
+	<movable-area class='movable-area' style='display:{{movableViewInfo.showClass}}; height:{{pageInfo.scrollHeight}}%;'>
+		<movable-view
+		 class='line'
+		 out-of-bounds='true'
+		 damping='999'
+		 direction="vertical"
+		 y="{{movableViewInfo.y}}"
+		>
+			<view
+			 class='TapArea'
+			 data-index='{{index}}'
+			 bindtouchstart='dragStart'
+			 bindtouchmove='dragMove'
+			 bindtouchend='dragEnd'
+			>{{movableViewInfo.data.id}}.
+			</view>
+			<input value="{{movableViewInfo.data.name}}" />
+			<view
+			 class="tick_circle"
+			 wx:if="{{movableViewInfo.data.icon==0}}"
+			 bindtap="ImgTap"
+			 data-index='{{index}}'
+			/>
+			<image
+			 class="board-img"
+			 lazy-load
+			 src="https://wxda.hahaturbo.site/daka-img/tick_ok.png"
+			 wx:if="{{movableViewInfo.data.icon==1}}"
+			 bindtap="ImgTap"
+			 data-index='{{index}}'
+			/>
+			<image
+			 class="board-img"
+			 lazy-load
+			 src="https://wxda.hahaturbo.site/daka-img/tick_aim.png"
+			 wx:if="{{movableViewInfo.data.icon==2}}"
+			 data-index='{{index}}'
+			/>
+		</movable-view>
+	</movable-area>
+
+	<view  style='margin:auto 0;overflow-y:auto;width:100%;'>
+		<block wx:for='{{goalsBoard}}' wx:if='{{(index<10)||(index<$state.board_num)}}'>
+			<view class='line {{pageInfo.readyPlaceIndex == index ? "ready-place" : ""}}'>
+				<view
+				 class='TapArea'
+				 data-index='{{index}}'
+				 bindtouchstart='dragStart'
+				 bindtouchmove='dragMove'
+				 bindtouchend='dragEnd'
+				>{{item.id}}.
+				</view>
+				<input
+				 data-index='{{index}}'
+				 value="{{item.name}}"
+				 maxlength="20"
+				 bindinput="{{$state.isLogin?'bindKeyInput':'ToLogin'}}"
+				 bindblur="FinshInput"
+				 disabled="{{item.disabled}}"
+				/>
+				<view
+				 class="tick_circle"
+				 wx:if="{{item.icon==0}}"
+				 bindtap='{{item.disabled==false?"ImgTap":""}}'
+				 data-index='{{index}}'
+				/>
+				<image
+				 class="board-img"
+				 lazy-load
+				 src="https://wxda.hahaturbo.site/daka-img/tick_ok.png"
+				 wx:if="{{item.icon==1}}"
+				 bindtap="ImgTap"
+				 data-index='{{index}}'
+				/>
+				<image
+				 class="board-img"
+				 lazy-load
+				 src="https://wxda.hahaturbo.site/daka-img/tick_aim.png"
+				 wx:if="{{item.icon==2}}"
+				 data-index='{{index}}'
+				/>
+			</view>
+		</block>
+	</view>
+</view>
+

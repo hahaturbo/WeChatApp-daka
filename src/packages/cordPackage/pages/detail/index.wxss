@@ -1,0 +1,95 @@
+/* miniprogram/pages/setting/cardrecord/detail/detail.wxss */
+
+#carddetail2 {
+  width: 100%;
+  height: 100%;
+}
+
+.ad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 11vh;
+  width: 100vw;
+  font-size: 90rpx;
+  font-weight: 600;
+  text-align: center;
+  animation-name: advise_bg;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+.ad_t {
+  animation-name: advise_ft;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+@keyframes advise_bg {
+  0% {
+    background-color: #e74c3c;
+  }
+
+  20% {
+    background-color: #f1c40f;
+  }
+
+  40% {
+    background-color: #1abc9c;
+  }
+
+  60% {
+    background-color: #3498db;
+
+  }
+
+  80% {
+    background-color: #9b59b6;
+  }
+
+  100% {
+    background-color: #e74c3c;
+  }
+}
+
+@keyframes advise_ft {
+  0% {
+    transform: translateX(-60vw) scale(0.2);
+    font-weight: 300;
+  }
+
+  20% {
+    transform: translateX(-20vw) scale(0.6);
+    font-weight: 400;
+  }
+
+  40% {
+    transform: translateX(0vw) scale(1.5);
+    font-weight: 500;
+  }
+
+  60% {
+    transform: translateX(20vw) scale(1);
+
+    font-weight: 500;
+  }
+
+  80% {
+    transform: translateX(40vw) scale(0.6);
+
+    font-weight: 400;
+  }
+
+  100% {
+    transform: translateX(60vw) scale(0.2);
+    font-weight: 300;
+  }
+}

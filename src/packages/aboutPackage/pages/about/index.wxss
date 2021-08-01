@@ -1,0 +1,47 @@
+/* miniprogram/pages/setting/about/about.wxss */
+.box1 {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: rgb(255, 204, 102);
+  margin:80rpx;
+}
+
+.box2 {
+  margin: 50rpx;
+  height: 40vh;
+
+  /* word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line; */
+  font-size: 30rpx;
+  align-items: center;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: block;
+}
+
+.box3 {
+  margin-top: 10%;
+  display: flex;
+  align-content:center;
+  align-items: center;
+}
+.box3in {
+  margin: 0px 20rpx;
+  width: 100%;
+  display: flex;
+flex-direction:row;
+align-content:center;
+justify-content: center; 
+  align-items: center;
+  color: var(--main-color);
+}
+
+
+.box4 {
+  text-align: center;
+
+}

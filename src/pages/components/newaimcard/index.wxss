@@ -1,0 +1,96 @@
+/* pages/newaimcard/newaimcard.wxss */
+.displayNone {
+  display: none !important;
+}
+
+.newaimcard {
+  height: 89vh;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 50rpx 50rpx 0 0;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 1s ease;
+  box-sizing: border-box;
+}
+
+.select {
+  margin: 30rpx auto;
+  height: 80rpx;
+  width: 75%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.single,
+.team {
+  height: 100%;
+  width: 50%;
+  background: white;
+  border: 1rpx solid black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single {
+  border-radius: 50rpx 0rpx 0rpx 50rpx;
+}
+
+.team {
+  border-radius: 0rpx 50rpx 50rpx 0rpx;
+}
+
+.team_select {
+  background: var(--main-color);
+}
+
+.card {
+  box-sizing: border-box;
+  border-bottom: 4rpx solid #eee;
+  height: 100rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.card:last-child {
+  border-color: transparent;
+}
+
+.title-type {
+  flex: 1 0 auto;
+}
+
+.right_text {
+  flex: 1 1 auto;
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.title_input {
+  flex: 0 1 auto;
+}
+
+.right_text_unselect {
+  color: gray;
+}
+
+.btn_invite {
+  flex: 1;
+  text-align: center;
+  background-color: var(--main-color);
+  padding: 10rpx;
+  height: 70rpx;
+}

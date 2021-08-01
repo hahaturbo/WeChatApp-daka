@@ -1,0 +1,73 @@
+/* pages/invite/invite.wxss */
+.invite {
+  height: 89vh;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 50rpx 50rpx 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 1s ease;
+  box-sizing: border-box;
+}
+.user {
+  height: 250rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.user_img {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+  text-align: center;
+  border: 4rpx solid #ed7c31bd;
+}
+
+.userzonetext {
+  flex: 1 1 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 50rpx;
+}
+
+.user_name {
+  line-height: 70rpx;
+  font-size: 70rpx;
+}
+
+.invite_data {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail {
+  border-bottom: 3rpx solid #eee;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20rpx 50rpx;
+}
+
+.member {
+  margin: 10rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.member_img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}

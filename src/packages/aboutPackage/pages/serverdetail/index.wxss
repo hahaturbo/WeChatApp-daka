@@ -1,0 +1,4 @@
+/* miniprogram/pages/setting/about/serverdetail/serverdetail.wxss */
+view{
+  margin:70rpx;
+}

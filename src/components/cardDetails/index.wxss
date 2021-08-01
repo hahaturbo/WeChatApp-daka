@@ -1,0 +1,229 @@
+/* components/cardDetails/cardDetail.wxss */
+.cardDetail {
+  height: 89vh;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 50rpx 50rpx 0 0;
+  padding: 30rpx 30rpx 0 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all .5s ease-in-out;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.cardDetail text {
+  line-height: 50rpx;
+}
+
+.card_title {
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 600;
+  padding: 3%;
+}
+
+.type {
+  margin: 15rpx 0 15rpx 50rpx;
+  font-size: 35rpx;
+  font-weight: 500;
+}
+
+.calander {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  border: #7b7575 2.5rpx solid;
+  border-left: 0;
+  border-right: 0;
+  margin: 30rpx 0;
+  padding: 2% 0;
+}
+
+.calander_top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5rpx 40rpx;
+  box-sizing: border-box;
+}
+.left.arrow{
+  width: 25rpx;
+  height: 25rpx;
+  border: 3rpx solid rgb(0, 0, 0);
+  border-width: 3.5rpx 3.5rpx 0 0;
+  transform: rotate(-135deg);
+}
+.right.arrow{
+  width: 25rpx;
+  height: 25rpx;
+  border: 3rpx solid rgb(0, 0, 0);
+  border-width: 0 3.5rpx 3.5rpx 0;
+  transform: rotate(-45deg);
+}
+.date_title {
+  flex: 1;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  text-align: center;
+  padding: 5rpx 0;
+  box-sizing: border-box;
+}
+
+.weektext {
+  flex: 1;
+  border: solid 5rpx rgba(0, 0, 0, 0);
+  font-weight: 200;
+}
+
+.date {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx, 10rpx;
+  box-sizing: border-box;
+}
+
+.grid {
+  display: inline-block;
+  width: 13.69999%;
+  line-height: 40rpx;
+  position: relative;
+  margin: 2rpx;
+}
+
+.self {
+  position: absolute;
+  top: -4rpx;
+  right: -4rpx;
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: rgb(255, 204, 102);
+  border: 5rpx solid rgb(255, 204, 102);
+}
+
+.gray {
+  color: #ccc;
+}
+
+.wrap {
+  border: solid 5rpx rgba(0, 0, 0, 0);
+}
+
+.wrap.othersigned {
+  border-color: rgb(255, 204, 102);
+}
+
+.wrap.signed {
+  background: rgb(255, 204, 102);
+  width: 85%;
+  margin: 0 auto;
+}
+
+.wrap.mysigned {
+  font-weight: 550;
+}
+
+.wrap.allsigned {
+  background: rgb(255, 204, 102);
+  border-color: rgb(255, 204, 102);
+}
+
+.wrap.select {
+  border-radius: 22rpx;
+  border: solid 5rpx rgb(70, 225, 96);
+}
+
+.group.select {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  margin-top: 15rpx;
+  z-index: 99999;
+  border: solid 3rpx rgb(255, 204, 102);
+  border-radius: 12rpx;
+}
+
+.detaildata {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.userimgs {
+  display: flex;
+  padding: 5rpx;
+}
+
+.user_img {
+  flex: 1;
+  margin: 0 5rpx;
+  border: solid rgb(127, 127, 127) 2.5rpx;
+  border-radius: 15rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.group_members {
+  display: flex;
+}
+
+.group_user {
+  display: flex;
+  margin: 10rpx;
+}
+
+.members_img {
+  margin: 0 5rpx;
+  border: solid rgb(255, 204, 102) 3.5rpx;
+  border-radius: 15rpx;
+  height: 70rpx;
+  width: 70rpx;
+  background-color: rgb(242, 242, 242);
+}
+
+.members_text {
+  line-height: 50rpx;
+  margin-left: 20rpx;
+}
+
+.buttongroup {
+  margin: auto 0 50rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todaydaka {
+  margin: 20rpx auto;
+  border-radius: 20rpx;
+  background-color: rgb(255, 153, 102);
+  color: #fff;
+  text-align: center;
+}
+
+.todaydaka.signed {
+  background-color: transparent;
+  color: rgb(255, 153, 102);
+}
+
+.deletedaka {
+  background-color: transparent;
+  color: rgb(230, 67, 64);
+  padding: 10rpx 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card_ended {
+  height: 100rpx;
+  width: 100rpx;
+  margin-right: 50rpx;
+  align-self: flex-end;
+}

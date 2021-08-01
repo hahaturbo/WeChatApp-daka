@@ -1,0 +1,142 @@
+<!-- pages/newaimcard/newaimcard.wxml -->
+<view class="newaimcard">
+	<mp-dialog
+	 title="{{dialogTitle}}"
+	 show="{{dialogShow}}"
+	 bindbuttontap="tapDialogButton"
+	 buttons="{{dialogsButton}}"
+	/>
+	<view class="select">
+		<view class='{{team==0?".team_select":""}} single' bindtap="click_single_btn">个人打卡</view>
+		<view class='{{team==1?".team_select":""}} team' bindtap="click_team_btn">小组打卡</view>
+	</view>
+	<!-- 选项 -->
+	<view style="overflow-y: auto;width:100%;">
+		<view class="card">
+			打卡类型：
+			<picker
+			 data-name="goal_type"
+			 class="right_text"
+			 bindchange="valueChanged"
+			 value="{{type}}"
+			 range="{{type_array}}"
+			>
+				{{type_array[type]}}
+			</picker>
+		</view>
+		<view class="card">
+			<view wx:if="{{type!=2}}" class="title-type">打卡标题：</view>
+			<view wx:else class="title-type">每日步数目标：</view>
+			<view class='right_text title_input'>
+				<input
+				 wx:if="{{type!=2}}"
+				 maxlength="10"
+				 placeholder="点此输入"
+				 placeholder-style='text-align:right'
+				 data-name="title"
+				 bindinput="TitleInput"
+				 value="{{title}}"
+				/>
+				<input
+				 wx:else
+				 maxlength="5"
+				 placeholder="点此输入步数"
+				 placeholder-style='text-align:right'
+				 data-name="title"
+				 bindinput="TitleInput"
+				 type='number'
+				 value="{{title}}"
+				/>
+			</view>
+		</view>
+		<block wx:if="{{type==1}}">
+			<view class='card' bindtap="doUpload">
+				<text>开始日期:</text>
+				<picker
+				 mode="date"
+				 class='right_text {{date_start=="请选择"?"right_text_unselect":""}}'
+				 value="{{date_start}}"
+				 start="2019-09-01"
+				 end="2099-09-01"
+				 data-name="start_time"
+				 bindchange="valueChanged"
+				>
+					{{date_start}}
+				</picker>
+			</view>
+			<view class='card' bindtap="doUpload">
+				<view>结束日期:</view>
+				<picker
+				 mode="date"
+				 class='right_text {{date_end=="请先选择开始日期"||date_end==="请选择"?"right_text_unselect":""}}'
+				 value="{{date_start}}"
+				 start="2019-09-01"
+				 end="2099-09-01"
+				 data-name="end_time"
+				 bindchange="valueChanged"
+				>
+					{{ date_end}}
+				</picker>
+			</view>
+			<view class='card' bindtap="doUpload">
+				<!-- bindPickerFrequencyChange -->
+				<view>打卡频率:</view>
+				<picker
+				 class="right_text"
+				 mode="multiSelector"
+				 data-name="frequency"
+				 bindchange="valueChanged"
+				 bindcolumnchange="bindMultiPickerColumnChange"
+				 value="{{frequency}}"
+				 range="{{frequencyArray}}"
+				>
+					{{frequencyout}}
+				</picker>
+			</view>
+			<view class='card'>
+				<text>打卡时间:</text>
+				<view class='right_text'>
+					<picker
+					 mode="time"
+					 class='{{time_aim1=="请选择"?"right_text_unselect":""}}'
+					 value="{{time}}"
+					 start="00:00"
+					 end="23:59"
+					 data-name="needed_be_signed_at"
+					 bindchange="valueChanged"
+					>
+						{{time_aim1}}
+					</picker>
+					<view>—</view>
+					<picker
+					 class='{{time_aim2=="请选择"?"right_text_unselect":""}}'
+					 mode="time"
+					 value="{{time}}"
+					 start="00:00"
+					 end="23:59"
+					 data-name="needed_be_signed_deadline"
+					 bindchange="valueChanged"
+					>
+						{{time_aim2}}
+					</picker>
+				</view>
+			</view>
+		</block>
+		<view class='card' wx:if="{{team!=0}}">
+			<view class="title-type">
+				邀请好友:
+				<view style='font-size:30rpx;color:gray'>{{share_text[0]}}</view>
+			</view>
+			<!-- 新建打卡默认0，详情传对应下标 -->
+			<button
+			 class="btn_invite"
+			 open-type='{{$state.can_share?"share":""}}'
+			 bindtap="btn_share"
+			 data-inviteid="{{invite_id}}"
+			>
+				{{share_text[1]}}
+			</button>
+		</view>
+	</view>
+</view>
+

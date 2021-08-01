@@ -1,0 +1,46 @@
+/* miniprogram/pages/cardrecord/cardrecord.wxss */
+/* page {
+  width: 100%;
+  height: 100%;
+} */
+
+.cardrecord {
+  width: 100%;
+  height: 100%;
+  padding: 10rpx 0;
+}
+
+.null {
+  font-size: 40rpx;
+  text-align: center;
+  background-color: transparent;
+
+}
+
+.slideitem {
+  margin: 5rpx 0;
+  border-bottom: 5rpx solid #e8e8e8;
+  box-sizing: border-box;
+  padding: 15rpx 10rpx 15rpx 30rpx;
+}
+
+.slideitem:last-child {
+  border-color: transparent;
+}
+
+.mid-text {
+  font-size: 40rpx;
+  font-weight: 500;
+}
+
+.img_delete {
+  background-color: red;
+}
+
+.small-text {
+  color: #FFCC66
+}
+
+.delete_text {
+  color: red;
+}

@@ -1,0 +1,136 @@
+<!-- components/cardDetails/cardDetail.wxml -->
+<scroll-view
+ scroll-y="true"
+ class="cardDetail"
+ bindscroll="handleScroll"
+ style="{{scrollToTop?'height:92vh':''}}"
+>
+	<!-- 打卡标题 -->
+	<view class="card_title">{{$state.CardData[item].goal_name}}</view>
+	<!-- 日历 -->
+	<view class="calander">
+		<!-- 年月 -->
+		<view class="calander_top">
+			<view class="left arrow" bindtap="lastmonth" />
+			<text class="date_title">{{datetitle}}</text>
+			<view class="right arrow" bindtap="nextmonth" />
+		</view>
+		<!-- 主体 -->
+		<view class="calander_main">
+			<!-- 表头 -->
+			<view class="header">
+				<view wx:for="{{weektext}}" class="weektext" wx:key='item'>{{item}}</view>
+			</view>
+			<!-- 日期 -->
+			<view class="date">
+				<!-- 上月 -->
+				<view class="gray grid" wx:for="{{lastmonthgrid}}" wx:key='item'>{{item}}</view>
+				<!-- 当月 -->
+				<view
+				 class="grid"
+				 wx:for="{{thismonthday}}"
+				 wx:key='thismonth'
+				 wx:for-item="thismonthday"
+				>
+					<!-- 是否今天 -->
+					<view class='self' wx:if="{{ format === year+'-'+thismonthday.monthFormat+'-'+thismonthday.dateFormat && !cardend }}" />
+					<!-- date -->
+					<view class="wrap {{thismonthday.othersigned?'othersigned':''}} {{!$state.CardData[item].goal_is_a_group&&thismonthday.signed?'signed':''}} {{$state.CardData[item].goal_is_a_group&&thismonthday.signed?'mysigned':''}} {{thismonthday.signedmembers.length==$state.CardData[item].groupData.groupMembers.length&&$state.CardData[item].groupData.groupMembers.length>0?'allsigned':''}}" bindtap='select' data-date='{{thismonthday.date}}'>
+						{{thismonthday.date}}
+					</view>
+					<!-- 小组打卡用户头像框 -->
+					<view
+					 class="group {{select === year+'-'+thismonthday.monthFormat+'-'+thismonthday.dateFormat ? 'select' :''}}"
+					 hidden="{{ !((select === year+'-'+thismonthday.monthFormat+'-'+thismonthday.dateFormat)&&secondselect==1)}}"
+					 wx:if="{{$state.CardData[item].goal_is_a_group&&thismonthday.signedmembers.length}}"
+					 style="right:{{thismonthday.week>3?0:auto}};"
+					>
+						<view class="userimgs">
+							<image
+							 lazy-load
+							 class="user_img"
+							 wx:for="{{thismonthday.signedmembers}}"
+							 wx:key='item'
+							 wx:for-item="GroupMembers"
+							 src="{{GroupMembers.img}}"
+							/>
+						</view>
+					</view>
+				</view>
+				<!-- 下月 -->
+				<view class="gray grid" wx:for="{{nextmonthgrid}}" wx:key='item'>{{item}}</view>
+			</view>
+		</view>
+	</view>
+	<!-- 打卡详情 -->
+	<view class="detaildata">
+		<view class="type">
+			打卡类型：{{$state.CardData[item].goal_is_a_group?'小组 ':''}}{{goal_type[$state.CardData[item].goal_type%3]}}
+			{{$state.CardData[item].goal_type>=3?'已删除':''}}
+		</view>
+		<view wx:if="{{$state.CardData[item].goal_type%3==2}}">
+			<view class="type">
+				今日步数：{{$state.stepInfoList[$state.stepInfoList.length-1].step}}
+			</view>
+		</view>
+		<view wx:if="{{$state.CardData[item].goal_type%3==1}}">
+			<view class="type">开始时间：{{$state.CardData[item].started_at}}</view>
+			<view class="type">结束时间：{{$state.CardData[item].ended_in}}</view>
+			<view class="type">
+				打卡频率：每{{$state.CardData[item].frequency_type[2]==1?$state.CardData[item].frequency+'月':($state.CardData[item].frequency%7==0?$state.CardData[item].frequency/7+'周':$state.CardData[item].frequency+'天')}}
+				{{$state.CardData[item].frequency_type[0]==0?"任意一天":"仅当天"}}
+			</view>
+			<view class="type">
+				打卡时间：{{$state.CardData[item].needed_be_signed_at}}-{{$state.CardData[item].needed_be_signed_deadline}}
+			</view>
+		</view>
+		<view class="group_members" wx:if="{{$state.CardData[item].goal_is_a_group?true:false}}">
+			<view class="type">小组成员：</view>
+			<view class="group_users">
+				<view
+				 class="group_user"
+				 wx:for="{{$state.CardData[item].groupData.groupMembers}}"
+				 wx:key="item"
+				 wx:for-item="GroupData"
+				>
+					<image lazy-load class="members_img" src="{{GroupData.img}}" />
+					<view class="type members_text">{{GroupData.nickname}}</view>
+				</view>
+				<view class="group_user invite" wx:if="{{$state.CardData[item].groupData.groupMembers.length<5&&!cardend}}">
+					<button
+					 class="button_invite"
+					 open-type='share'
+					 data-inviteId="{{$state.CardData[item].groupData.invite_id}}"
+					 data-nickName="{{$state.CardData[item].groupData.groupMembers[0].nickname}}"
+					 style="background-color: transparent;text-align:left;position:absolute;color:rgba(0,0,0,0)"
+					>
+						分享
+					</button>
+					<image lazy-load class="members_img" src="https://wxda.hahaturbo.site/daka-img/invite_add.png" />
+					<view class="type members_text invite">邀请好友加入</view>
+				</view>
+			</view>
+		</view>
+		<image
+		 lazy-load
+		 class="card_ended"
+		 src="https://wxda.hahaturbo.site/daka-img/cardend.png"
+		 wx:if="{{cardend}}"
+		/>
+		<view class="buttongroup" wx:if="{{!cardend}}">
+			<button class="todaydaka {{$state.CardData[item].sign_today?'signed':''}}" bindtap="todaydaka" loading="{{signLoading}}">
+				{{$state.CardData[item].sign_today?'今日完成':'今日打卡'}}
+			</button>
+			<view class="deletedaka" bindtap="deletedaka">删除打卡</view>
+		</view>
+		<mp-dialog
+		 title="{{dialogtitle}}"
+		 show="{{dialogshow}}"
+		 bindbuttontap="buttontap"
+		 buttons="{{dialogbutton}}"
+		>
+			<view>删除后不可恢复，确定吗？</view>
+		</mp-dialog>
+	</view>
+</scroll-view>
+
