@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "./output_resources",
+    "allowJs": true,
+    "checkJs": false,
+    "target": "esnext",
+    "module": "esnext",
+    /* 如果设为true，编译每个ts文件之后会生成一个js文件和一个声明文件,
+       declaration和allowJs不能同时设为true */
+    "declaration": false,
+    // 编译的时候删除注释
+    "removeComments": true,
+    // 不允许变量或函数参数具有隐式any类型
+    "noImplicitAny": true,
+    // 默认false,是否检测定义了但是没使用的变量
+    "noUnusedLocals": true,
+    // 用于检查是否有在函数体中没有使用的参数
+    "noUnusedParameters": true,
+    // 检测this是否隐式指定
+    "noImplicitThis": true,
+    // 使用js的严格模式,在每一个文件上部声明 use strict
+    "alwaysStrict": true,
+    // 用来指定允许从没有默认导出的模块中默认导入
+    "allowSyntheticDefaultImports": true,
+    // 用于检查switch中是否有case没有使用break跳出switch
+    "noFallthroughCasesInSwitch": true
+  }
+}

@@ -1,0 +1,420 @@
+/**index.wxss**/
+.container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.auth {
+  width: 100vh;
+  height: 140vh;
+  position: fixed;
+  background-color: #aeadaddd;
+  z-index: 99;
+  padding-top: 100px;
+  text-align: center;
+  align-items: center;
+}
+
+.auth_in2 {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 540rpx;
+  height: 60vh;
+  position: absolute;
+  background-color: #fff;
+  z-index: 99;
+  padding-top: 20px;
+  border-radius: 50rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth_in {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 540rpx;
+  height: 400rpx;
+  position: absolute;
+  background-color: #fff;
+  z-index: 99;
+  padding-top: 20px;
+  border-radius: 50rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user_img {
+  margin: 10rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 20rpx;
+  border-width: 6rpx;
+  border-style: solid;
+  border-color: var(--main-color);
+  overflow: hidden;
+  text-align: center;
+}
+
+.auth button {
+  margin-bottom: 10px;
+}
+
+/* 主新建卡类定义 类：home-content */
+.downfirst {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: 125%;
+  width: 100%;
+  animation: cloverRandom 10s cubic-bezier(0.2, 0, 0, 0.11) 0s infinite;
+}
+
+@keyframes cloverRandom {
+  0% {
+    opacity: 0;
+    bottom: 250%;
+  }
+
+  20% {
+    opacity: 1;
+    bottom: 125%;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.AllMainCard {
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.text_skin1 {
+  color: #ffffff;
+}
+
+.text_skin2 {
+  color: rgb(0, 0, 0);
+}
+
+.text_skin2_2 {
+  color: gray;
+}
+
+.home-content text {
+  font-size: 44rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 10rpx;
+}
+
+.home-content {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.aim_card {
+  /*滚动条*/
+  flex-shrink: 0;
+  width: 88%;
+  height: 680rpx;
+  margin: 40rpx auto;
+  border-radius: 45rpx;
+  border: 5rpx dotted #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mid-contentA {
+  flex-shrink: 0;
+  width: 88%;
+  height: 203rpx;
+  margin: 20rpx auto;
+  border: 5rpx dotted #ffffff;
+  border-radius: 30rpx;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.bgcolor-g {
+  box-shadow: 0rpx 0rpx 8rpx rgba(242, 157, 112, 0.9);
+  background-color: #a8d08c;
+}
+
+.bgcolor-b {
+  box-shadow: 0rpx 0rpx 8rpx rgba(242, 157, 112, 0.9);
+  background-color: #b3d0eb;
+}
+
+.bgcolor-o {
+  box-shadow: 0rpx 0rpx 8rpx rgba(242, 157, 112, 0.9);
+  background-color: #ffcc66;
+}
+
+.bgcolor-skin2 {
+  border: 5rpx dotted #353535;
+  background-color: var(--main-color2);
+}
+
+.contentAText {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+}
+
+.small-text {
+  font-size: 33rpx;
+  font-weight: normal;
+  text-align: left;
+  margin: 30rpx;
+  /* margin-top: 30rpx; */
+}
+
+.mid-text {
+  text-align: left;
+  font-size: 44rpx;
+  font-weight: bold;
+  margin: 10rpx;
+  margin-left: 30rpx;
+}
+
+.button {
+  width: 30%;
+  height: auto;
+  background-color: #ff9966;
+  border-radius: 26rpx;
+}
+
+.buttonNo {
+  background-color: #ff996600 !important;
+}
+
+.icon {
+  width: 100%;
+  height: 90%;
+}
+
+.button image {
+  width: 100%;
+  height: 100%;
+}
+
+.FullScreenCard {
+  height: 100%;
+  width: 100%;
+  margin-top: 3vh;
+  box-sizing: border-box;
+  transition: all 0.5s ease-in-out;
+}
+
+.toFullCard {
+  animation: open 1s forwards;
+}
+
+.toGoalCard {
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: open_goal 1s forwards;
+}
+
+.return2Home {
+  animation: close 1s forwards;
+}
+
+.fadeOut {
+  animation: fadeOutAnimation 1s forwards;
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+/*就是字面意思啊， 把home页的文字和按钮 消逝掉 */
+
+@keyframes open {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 50rpx 50rpx 0 0;
+  }
+}
+
+@keyframes open_goal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes close {
+  to {
+    opacity: 1;
+    width: 88%;
+    height: 680rpx;
+    /* background-color: var(--main-color); */
+  }
+
+  from {
+    opacity: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+}
+
+@keyframes closePad {
+  to {
+    opacity: 1;
+    width: 88%;
+    height: 680rpx;
+    background-color: var(--main-color);
+  }
+
+  from {
+    opacity: 0;
+    width: 720rpx;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+}
+
+/* 新建打卡按钮 */
+.new_aim_card {
+  width: 60%;
+  /* height: 80rpx; */
+  background: rgb(255, 153, 102);
+  border-radius: 25rpx;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0;
+  border-width: 5rpx;
+  border-style: dashed;
+  border-color: rgb(255, 153, 102);
+}
+
+.NACunable {
+  background: #00000000 !important;
+}
+
+.down {
+  background-color: var(--main-color2);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8vh;
+  z-index: 10;
+  box-shadow: 0rpx 4rpx 8rpx rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.downleft,
+.downmid,
+.downright {
+  width: auto;
+  height: 8vh;
+  flex: 1 1 auto;
+  border: 15rpx solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.down image {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.text_skin1 {
+  color: #ffffff;
+}
+
+.text_skin2 {
+  color: rgb(0, 0, 0);
+}
+
+.displayNone {
+  display: none !important;
+}
+
+.displayBlock {
+  display: block !important;
+}
+
+/* 背景图片定义 */
+.background {
+  background-color: var(--main-color);
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-size: 100% 100%;
+  z-index: -2;
+}
+
+/* 弹窗按钮颜色 */
+page .btn_cancel {
+  color: black;
+}
+
+page .btn_go_on {
+  color: red;
+}
+
+.color_skin1 {
+  background: var(--main-color);
+}
+
+.color_skin2 {
+  background: var(--main-color2);
+}

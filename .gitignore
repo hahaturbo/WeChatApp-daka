@@ -12,3 +12,8 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+output_resource
+
+yarn.lock
+yarn-error.log
