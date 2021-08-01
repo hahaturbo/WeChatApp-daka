@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "subpackages": [{
+    "root": "packages/aboutPackage",
+    "pages": [
+      "pages/about/index",
+      "pages/contact/index",
+      "pages/serverdetail/index"
+    ]
+  }, {
+    "root": "packages/accountPackage",
+    "pages": [
+      "pages/account/index"
+    ]
+  }, {
+    "root": "packages/cordPackage",
+    "pages": [
+      "pages/cardrecord/index",
+      "pages/detail/index"
+    ]
+  }, {
+    "root": "packages/helpPackage",
+    "pages": [
+      "pages/UsingHelp/index"
+    ]
+  }, {
+    "root": "packages/skinPackage",
+    "pages": [
+      "pages/skin/index"
+    ]
+  }],
+  "window": {
+    "backgroundColor": "#FFC864",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFC864",
+    "navigationBarTitleText": "极简打卡",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
+}

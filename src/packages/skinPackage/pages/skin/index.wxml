@@ -1,0 +1,18 @@
+<!-- miniprogram/pages/setting/skin/skin.wxml -->
+<wxs src="./index.wxs" module="wxs" />
+<view class="skin">
+	<view class="skin-swider" bindtouchmove="{{wxs.wxsTouchMove}}" bindtouchstart="{{wxs.wxsTouchStart}}">
+		<view class="skin-image-swider {{index==1?'':'left'}}">
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/skin1.png" />
+		</view>
+		<view class="skin-image-swider {{index==2?'':'right'}}">
+			<image lazy-load src="https://wxda.hahaturbo.site/daka-img/skin2.png" />
+		</view>
+	</view>
+	<view class="skin-button">
+		<view class="appear left" wx:if="{{index==1}}">柠檬黄</view>
+		<view class="appear right" wx:if="{{index==2}}">方格纸</view>
+		<view class="choose appear" wx:if='{{$state.skin==index}}' />
+		<view class="nochoose appear" wx:else bindtap="btn" />
+	</view>
+</view>
