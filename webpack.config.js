@@ -26,6 +26,18 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, OUTPUT_PATH),
       globalObject: 'wx',
     },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new AddEntryPlugin(),
+      new MiniCssExtractPlugin({
+        filename: '[name].wxss',
+      }),
+      new CopyDependentFilePlugin({
+        output: path.resolve(__dirname, OUTPUT_PATH),
+        input: CLIENT_SRC_PATH,
+        imageLimit: 300,
+      }),
+    ],
     module: {
       rules: [
         {
@@ -36,8 +48,8 @@ module.exports = (env, argv) => {
           test: /\.wxs$/,
           loader: 'file-loader',
           options: {
-            name:'[path][name].[ext]'
-          }
+            name: '[path][name].[ext]',
+          },
         },
         {
           test: /\.(wx|le)ss$/,
@@ -57,44 +69,20 @@ module.exports = (env, argv) => {
         },
       ],
     },
-    plugins: [
-      new CleanWebpackPlugin(),
-      new AddEntryPlugin(),
-      new MiniCssExtractPlugin({
-        filename: '[name].wxss',
-      }),
-      new CssMinimizerPlugin({
-        test: /.(wxss|less)/,
-      }),
-      new CopyDependentFilePlugin({
-        output: path.resolve(__dirname, OUTPUT_PATH),
-        input: CLIENT_SRC_PATH,
-        imageLimit: 300,
-      }),
-    ],
     resolve: {
       extensions: ['.ts', '.js', '.less', '.wxss', '.d.ts'],
       alias: {
         components: path.resolve(CLIENT_SRC_PATH, 'components'),
-        services: path.resolve(CLIENT_SRC_PATH, 'services'),
         static: path.resolve(CLIENT_SRC_PATH, 'static'),
-        typings: path.resolve(CLIENT_SRC_PATH, 'typings'),
         utils: path.resolve(CLIENT_SRC_PATH, 'utils'),
-        constant: path.resolve(CLIENT_SRC_PATH, 'constant.ts'),
       },
     },
     optimization: {
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            test: /^((?!(\/pages\/|\/components\/|app\.ts|app\.less)).)*$/,
-            chunks: 'all',
-            name: 'chunk',
-            minChunks: 1,
-            minSize: 0,
-          },
-        },
-      },
+      minimizer: [
+        new CssMinimizerPlugin({
+          test: /\.(le|wx)ss$/,
+        }),
+      ],
     },
   };
 
