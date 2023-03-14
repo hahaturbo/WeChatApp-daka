@@ -13,6 +13,6 @@
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
     "replace-ext": "^2.0.0",
-    "webpack": "^5.47.1"
+    "webpack": "^5.76.0"
   }
 }
